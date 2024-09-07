@@ -1,0 +1,306 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CodePipeline for an Workload Service.
+
+Parameters:
+  CoreAccountId:
+    Type: String
+    Description: The account ID of the core account
+
+  CoreAccountRegion:
+    Type: String
+    Description: The region of the core account
+
+  CIServiceName:
+    Type: String
+    Description: The name of the CI service
+
+  CIServiceImageRepositoryURL:
+    Type: String
+    Description: The URL of the service's ECR repository
+
+  RepositoryName:
+    Type: String
+    Description: The name of the code repository
+
+  BranchName:
+    Type: String
+    Default: main
+    Description: The branch name to trigger the pipeline
+
+  BranchNamePrettified:
+    Type: String
+    Default: main
+    Description: The prettified branch name
+
+  CoreMetadataUpdateProjectName:
+    Type: String
+    Description: The name of the CodeBuild project that will update the service metadata in Core account
+
+  CoreMetadataUpdateProjectRoleArn:
+    Type: String
+    Description: The ARN of the role that will be used by the CodeBuild project to update the service metadata in Core account
+
+  CodeBuildMetadataUpdateProjectRoleArn:
+    Type: String
+    Description: The ARN of the role that will be used by the CodeBuild project to start build of the service metadata update project in Core account
+
+Resources:
+  ServiceCodePipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub ${CIServiceName}-service-codepipeline-${BranchNamePrettified}
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codepipeline.amazonaws.com
+            Action: sts:AssumeRole
+          - Effect: Allow
+            Principal:
+              Service: codebuild.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AWSCodePipeline_FullAccess
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AWSCodeBuildDeveloperAccess
+      Policies:
+        - PolicyName: docker-credentials-secret-access-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource: !Sub arn:${AWS::Partition}:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:/demo/shared/docker-hub/credentials-*
+        - PolicyName: service-pipeline-codebuild-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - codebuild:BatchGetBuilds
+                  - codebuild:StartBuild
+                  - codebuild:StopBuild
+                Resource:
+                  - !Sub arn:${AWS::Partition}:codebuild:${AWS::Region}:${AWS::AccountId}:project/${CIServiceName}-codebuild-${BranchNamePrettified}
+                  - !Sub arn:${AWS::Partition}:codebuild:${AWS::Region}:${AWS::AccountId}:project/${CIServiceName}-smup-${BranchNamePrettified}
+        - PolicyName: service-pipeline-artifact-bucket-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:GetBucketVersioning
+                  - s3:GetBucketLocation
+                  - s3:ListBucket
+                  - s3:PutObject
+                  - s3:PutObjectAcl
+                  - s3:DeleteObject
+                  - s3:DeleteObjectVersion
+                  - s3:AbortMultipartUpload
+                Resource:
+                  - !Sub arn:${AWS::Partition}:s3:::service-pipeline-artifact-bucket
+                  - !Sub arn:${AWS::Partition}:s3:::service-pipeline-artifact-bucket/*
+        - PolicyName: service-ecr-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:BatchGetImage
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:PutImage
+                  - ecr:InitiateLayerUpload
+                  - ecr:UploadLayerPart
+                  - ecr:CompleteLayerUpload
+                Resource: !Sub arn:${AWS::Partition}:ecr:${AWS::Region}:${AWS::AccountId}:repository/services/${CIServiceName}
+              - Effect: Allow
+                Action:
+                  - ecr:GetAuthorizationToken
+                Resource: "*"
+        - PolicyName: service-codecommit-repository-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - codecommit:GitPull
+                  - codecommit:GetBranch
+                  - codecommit:GetCommit
+                  - codecommit:UploadArchive
+                  - codecommit:GetUploadArchiveStatus
+                  - codecommit:ListRepositories
+                Resource: !Sub arn:${AWS::Partition}:codecommit:${AWS::Region}:${AWS::AccountId}:${RepositoryName}
+        - PolicyName: service-logs-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/${CIServiceName}-codebuild-${BranchNamePrettified}:*
+
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Sub ${CIServiceName}-codepipeline-${BranchNamePrettified}
+      RoleArn: !GetAtt ServiceCodePipelineRole.Arn
+      ArtifactStore:
+        Type: S3
+        Location: service-pipeline-artifact-bucket
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: CodeCommitSource
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeCommit
+                Version: '1'
+              Configuration:
+                RepositoryName: !Ref RepositoryName
+                BranchName: !Ref BranchName
+              OutputArtifacts:
+                - Name: SourceOutput
+              RunOrder: 1
+        - Name: Build
+          Actions:
+            - Name: CodeBuild
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: '1'
+              Configuration:
+                ProjectName: !Sub ${CIServiceName}-codebuild-${BranchNamePrettified}
+              InputArtifacts:
+                - Name: SourceOutput
+              RunOrder: 2
+        - Name: UpdateServiceMetadata
+          Actions:
+            - Name: CodeBuild
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: '1'
+              Configuration:
+                ProjectName: !Sub ${CIServiceName}-smup-${BranchNamePrettified}
+              InputArtifacts:
+                - Name: SourceOutput
+              RunOrder: 3
+
+  CodeBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub ${CIServiceName}-codebuild-${BranchNamePrettified}
+      Description: !Sub Pipeline for building ${CIServiceName} service
+      ServiceRole: !GetAtt ServiceCodePipelineRole.Arn
+      Environment:
+        ComputeType: BUILD_GENERAL1_MEDIUM
+        Type: LINUX_CONTAINER
+        Image: aws/codebuild/standard:7.0
+        PrivilegedMode: true
+        EnvironmentVariables:
+          - Name: CI_SERVICE_IMAGE_REPOSITORY_URL
+            Value: !Ref CIServiceImageRepositoryURL
+          - Name: AWS_ECR_ACCOUNT_ID
+            Value: !Ref AWS::AccountId
+          - Name: AWS_ECR_REGION
+            Value: !Ref AWS::Region
+          - Name: GIT_BRANCH
+            Value: !Ref BranchName
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: buildspec.yml
+      Artifacts:
+        Type: CODEPIPELINE
+      TimeoutInMinutes: 10
+
+  ServiceMetadataUpdateProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub ${CIServiceName}-smup-${BranchNamePrettified}
+      Description: Update the service metadata for the infrastructure
+      ServiceRole: !Ref CodeBuildMetadataUpdateProjectRoleArn
+      Environment:
+        ComputeType: BUILD_GENERAL1_MEDIUM
+        Type: LINUX_CONTAINER
+        Image: aws/codebuild/standard:7.0
+        PrivilegedMode: true
+        EnvironmentVariables:
+          - Name: GIT_BRANCH
+            Value: !Ref BranchName
+          - Name: CI_SERVICE_NAME
+            Value: !Ref CIServiceName
+          - Name: CI_SERVICE_IMAGE_REPOSITORY_URL
+            Value: !Ref CIServiceImageRepositoryURL
+          - Name: AWS_ECR_ACCOUNT_ID
+            Value: !Ref AWS::AccountId
+          - Name: AWS_ECR_REGION
+            Value: !Ref AWS::Region
+          - Name: CORE_ACCOUNT_ID
+            Value: !Ref CoreAccountId
+          - Name: CORE_ACCOUNT_REGION
+            Value: !Ref CoreAccountRegion
+          - Name: CORE_METADATA_UPDATE_PROJECT_NAME
+            Value: !Ref CoreMetadataUpdateProjectName
+          - Name: CORE_METADATA_UPDATE_PROJECT_ROLE_ARN
+            Value: !Ref CoreMetadataUpdateProjectRoleArn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: |
+          version: 0.2
+          phases:
+            install:
+              runtime-versions:
+                nodejs: 20
+              commands:
+                - sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d v3.38.0
+                - mv ./bin/task /usr/local/bin/task && chmod +x /usr/local/bin/task
+            pre_build:
+              commands:
+                - |
+                  export CREDENTIALS=$(aws sts assume-role --role-arn ${CORE_METADATA_UPDATE_PROJECT_ROLE_ARN} --role-session-name codebuild-session)
+
+                  export AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId')
+                  export AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey')
+                  export AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.Credentials.SessionToken')
+
+                  export GIT_COMMIT=${CODEBUILD_RESOLVED_SOURCE_VERSION}
+            build:
+              commands:
+                - |
+                  export SERVICE_METADATA=$(task service:get-metadata | jq -Mrc . | base64 -w 0)
+
+                  BUILD_ENVIRONMENT_VARIABLES=$(cat <<EOF
+                  [
+                      {
+                          "name": "SERVICE_NAME",
+                          "value": "${CI_SERVICE_NAME}"
+                      },
+                      {
+                          "name": "SERVICE_METADATA",
+                          "value": "${SERVICE_METADATA}"
+                      }
+                  ]
+                  EOF
+                  )
+
+                  aws codebuild start-build \
+                    --region "${CORE_ACCOUNT_REGION}" \
+                    --project-name "${CORE_METADATA_UPDATE_PROJECT_NAME}" \
+                    --environment-variables-override "${BUILD_ENVIRONMENT_VARIABLES}" \
+                    --no-cli-pager
+      Artifacts:
+        Type: CODEPIPELINE
+
+Outputs:
+  PipelineName:
+    Description: The name of the CodePipeline
+    Value: !Ref Pipeline

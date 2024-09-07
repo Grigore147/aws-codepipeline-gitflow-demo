@@ -1,0 +1,92 @@
+version: 3
+
+silent: true
+
+env:
+  AWS_ACCOUNTS_FILE: ./accounts.json
+  AWS_SERVICES_FILE: ./services.json
+
+tasks:
+  default:
+    desc: AWS CDK Pipeline Tasks
+    cmds: 
+      - |
+        source ./scripts/utils.sh
+        print_info "Available tasks:"
+        print_info "accounts:list          - List AWS accounts set for environments"
+        print_info "accounts:list-identity - List AWS accounts sts caller identities"
+        print_info "accounts:setup         - Setup AWS accounts for CDK deployments"
+        print_info "accounts:bootstrap     - Bootstrap AWS accounts for CDK deployments"
+        print_info "accounts:cleanup         - Un-bootstrap CDK from AWS accounts"
+        print_info "infra:synth            - Synthesize CDK Stacks"
+        print_info "infra:diff             - Diff CDK Stacks"
+        print_info "infra:deploy-core      - Deploy Core Stack"
+        print_info "infra:deploy           - Deploy All Stacks"
+        print_info "infra:destroy          - Destroy All Stacks"
+        print_info "infra:set-docker-credentials - Set Docker Hub credentials"
+
+  accounts:list:
+    desc: List AWS accounts set CDK deployments
+    cmds:
+      - cat ${AWS_ACCOUNTS_FILE}
+
+  accounts:list-identity:
+    desc: List AWS accounts sts caller identities
+    cmds:
+      - ./scripts/list-accounts-identity.sh
+
+  accounts:setup:
+    desc: Setup AWS accounts for CDK deployments
+    cmds:
+      - ./scripts/setup-accounts.sh
+
+  accounts:bootstrap:
+    desc: Bootstrap AWS accounts for CDK deployments
+    cmds:
+      - ./scripts/bootstrap-accounts.sh
+
+  accounts:cleanup:
+    desc: Cleanup CDKToolkit stack from AWS accounts
+    description: This will remove the CDK bootstrap stack from the AWS accounts.
+    cmds:
+      - ./scripts/cleanup-accounts.sh
+
+  infra:synth:
+    desc: Synthesize CDK Stacks
+    cmds:
+      - npx aws-cdk synth --all
+  
+  infra:diff:
+    desc: Diff CDK Stacks
+    cmds:
+      - |
+        AWS_CORE_PROFILE=$(jq -r .core.profile "${AWS_ACCOUNTS_FILE}")
+        npx aws-cdk diff --all --profile ${AWS_CORE_PROFILE}
+
+  infra:deploy-core:
+    desc: Deploy Core Stack
+    cmds:
+      - |
+        AWS_CORE_PROFILE=$(jq -r .core.profile "${AWS_ACCOUNTS_FILE}")
+        npx aws-cdk deploy CoreStack --profile ${AWS_CORE_PROFILE}
+  
+  infra:deploy:
+    desc: Deploy All Stacks
+    cmds:
+      - |
+        AWS_CORE_PROFILE=$(jq -r .core.profile "${AWS_ACCOUNTS_FILE}")
+        npx aws-cdk deploy --all --profile ${AWS_CORE_PROFILE}
+
+  infra:destroy:
+    desc: Destroy All Stacks
+    cmds:
+      - |
+        AWS_CORE_PROFILE=$(jq -r .core.profile "${AWS_ACCOUNTS_FILE}")
+        npx aws-cdk destroy --all --profile ${AWS_CORE_PROFILE}
+
+  infra:set-docker-credentials:
+    desc: Set Docker Hub credentials
+    summary: |
+      Save Docker Hub credentials in AWS Secrets Manager.
+    cmds:
+      - ./scripts/set-docker-credentials.sh

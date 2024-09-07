@@ -1,0 +1,38 @@
+{
+  "core": {
+    "name": "core",
+    "profile": "demo-core",
+    "accountId": "111111111111",
+    "region": "eu-central-1"
+  },
+  "shared": {
+    "name": "shared",
+    "profile": "demo-shared",
+    "accountId": "222222222222",
+    "region": "eu-central-1"
+  },
+  "sandbox": {
+    "name": "sandbox",
+    "profile": "demo-sandbox",
+    "accountId": "333333333333",
+    "region": "eu-central-1"
+  },
+  "develop": {
+    "name": "develop",
+    "profile": "demo-develop",
+    "accountId": "777777777777",
+    "region": "eu-central-1"
+  },
+  "staging": {
+    "name": "staging",
+    "profile": "demo-staging",
+    "accountId": "888888888888",
+    "region": "eu-central-1"
+  },
+  "production": {
+    "name": "production",
+    "profile": "demo-production",
+    "accountId": "999999999999",
+    "region": "eu-central-1"
+  }
+}
