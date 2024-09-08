@@ -17,7 +17,7 @@ tasks:
         print_info "accounts:list-identity - List AWS accounts sts caller identities"
         print_info "accounts:setup         - Setup AWS accounts for CDK deployments"
         print_info "accounts:bootstrap     - Bootstrap AWS accounts for CDK deployments"
-        print_info "accounts:cleanup         - Un-bootstrap CDK from AWS accounts"
+        print_info "accounts:cleanup       - Clean CDK Toolkit from AWS accounts"
         print_info "infra:synth            - Synthesize CDK Stacks"
         print_info "infra:diff             - Diff CDK Stacks"
         print_info "infra:deploy-core      - Deploy Core Stack"

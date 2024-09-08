@@ -1,0 +1,181 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="k3h3BO1Kf3Qh7kfTolwe">
+    <mxGraphModel dx="1242" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-1" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" parent="1" vertex="1">
+          <mxGeometry x="240" y="199" width="880" height="1001" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-78" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=0;dashed=1;strokeWidth=2;strokeColor=#6D90C2;" parent="vfSD4c-9eN2mQt4-FbNN-1" source="vfSD4c-9eN2mQt4-FbNN-28" target="vfSD4c-9eN2mQt4-FbNN-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-4" value="Shared Account" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#CD2264;dashed=0;" parent="vfSD4c-9eN2mQt4-FbNN-1" vertex="1">
+          <mxGeometry x="560" y="41" width="280" height="159" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-14" value="AWS CloudFormation Stack" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.stack;" parent="vfSD4c-9eN2mQt4-FbNN-4" vertex="1">
+          <mxGeometry x="101" y="41.5" width="78" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-5" value="Sandbox Account" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#CD2264;dashed=0;" parent="vfSD4c-9eN2mQt4-FbNN-1" vertex="1">
+          <mxGeometry x="560" y="221" width="280" height="159" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-15" value="AWS CloudFormation Stack" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.stack;" parent="vfSD4c-9eN2mQt4-FbNN-5" vertex="1">
+          <mxGeometry x="101" y="41.5" width="78" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-3" value="Develop Account" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#CD2264;dashed=0;" parent="vfSD4c-9eN2mQt4-FbNN-1" vertex="1">
+          <mxGeometry x="560" y="401" width="280" height="159" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-16" value="AWS CloudFormation Stack" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.stack;" parent="vfSD4c-9eN2mQt4-FbNN-3" vertex="1">
+          <mxGeometry x="101" y="41.5" width="78" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-7" value="Staging Account" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#CD2264;dashed=0;" parent="vfSD4c-9eN2mQt4-FbNN-1" vertex="1">
+          <mxGeometry x="560" y="581" width="280" height="159" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-17" value="AWS CloudFormation Stack" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.stack;" parent="vfSD4c-9eN2mQt4-FbNN-7" vertex="1">
+          <mxGeometry x="101" y="41.5" width="78" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-6" value="Production Account" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#CD2264;dashed=0;" parent="vfSD4c-9eN2mQt4-FbNN-1" vertex="1">
+          <mxGeometry x="560" y="761" width="280" height="159" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-18" value="AWS CloudFormation Stack" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.stack;" parent="vfSD4c-9eN2mQt4-FbNN-6" vertex="1">
+          <mxGeometry x="101" y="41.5" width="78" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-2" value="Core Account" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#CD2264;dashed=0;" parent="vfSD4c-9eN2mQt4-FbNN-1" vertex="1">
+          <mxGeometry x="40" y="41" width="461" height="919" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-10" value="" style="shape=rect;fillColor=#bac8d3;strokeColor=#23445d;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="41" y="40" width="358" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-9" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.codepipeline;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="41" y="40" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-23" value="AWS CodePipeline" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="81" y="45" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-55" value="" style="group" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1" connectable="0">
+          <mxGeometry x="61" y="400" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-28" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-55" vertex="1">
+          <mxGeometry width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-30" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-55" vertex="1">
+          <mxGeometry x="91" y="10" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-31" value="Shared Deployment Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-55" vertex="1">
+          <mxGeometry x="91" y="40" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-53" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cloudformation;" parent="vfSD4c-9eN2mQt4-FbNN-55" vertex="1">
+          <mxGeometry x="1" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-61" value="" style="group" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1" connectable="0">
+          <mxGeometry x="61" y="600" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-62" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#EFF4FC;" parent="vfSD4c-9eN2mQt4-FbNN-61" vertex="1">
+          <mxGeometry width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-63" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-61" vertex="1">
+          <mxGeometry x="91" y="10" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-64" value="Develop Deployment Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-61" vertex="1">
+          <mxGeometry x="91" y="40" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-65" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cloudformation;" parent="vfSD4c-9eN2mQt4-FbNN-61" vertex="1">
+          <mxGeometry x="1" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-71" value="" style="group" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1" connectable="0">
+          <mxGeometry x="61" y="800" width="400" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-72" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-71" vertex="1">
+          <mxGeometry width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-73" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-71" vertex="1">
+          <mxGeometry x="91" y="10" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-74" value="Production Deployment Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-71" vertex="1">
+          <mxGeometry x="91" y="40" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-75" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cloudformation;" parent="vfSD4c-9eN2mQt4-FbNN-71" vertex="1">
+          <mxGeometry x="1" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-90" value="manual confirmation required" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" parent="vfSD4c-9eN2mQt4-FbNN-71" vertex="1">
+          <mxGeometry x="189" width="131" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-83" value="" style="group" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1" connectable="0">
+          <mxGeometry x="60" y="100" width="321" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-49" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-83" vertex="1">
+          <mxGeometry x="1" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-51" value="AWS CodeCommit" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-83" vertex="1">
+          <mxGeometry x="91" y="10" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-52" value="Source Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-83" vertex="1">
+          <mxGeometry x="91" y="40" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-11" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.codecommit;" parent="vfSD4c-9eN2mQt4-FbNN-83" vertex="1">
+          <mxGeometry width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-20" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="60" y="200" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-19" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.codebuild;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="61" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-24" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="151" y="210" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-25" value="CDK Synth Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="151" y="240" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-57" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="61" y="500" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-58" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="152" y="510" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-59" value="Sandbox Deployment Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="152" y="540" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-60" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cloudformation;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="62" y="500" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-67" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="61" y="700" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-68" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="152" y="710" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-69" value="Staging Deployment Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="152" y="740" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-70" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cloudformation;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="62" y="700" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-85" value="" style="shape=rect;fillColor=#EFF4FC;strokeColor=#6c8ebf;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="61" y="300" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-86" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.codebuild;" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="62" y="300" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-87" value="AWS CodeBuild" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="152" y="310" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-88" value="CDK Self Update Stage" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#333333;fontStyle=0" parent="vfSD4c-9eN2mQt4-FbNN-2" vertex="1">
+          <mxGeometry x="152" y="340" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-79" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=0;dashed=1;strokeWidth=2;strokeColor=#6D90C2;" parent="vfSD4c-9eN2mQt4-FbNN-1" source="vfSD4c-9eN2mQt4-FbNN-57" target="vfSD4c-9eN2mQt4-FbNN-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-80" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=0;dashed=1;strokeWidth=2;strokeColor=#6D90C2;" parent="vfSD4c-9eN2mQt4-FbNN-1" source="vfSD4c-9eN2mQt4-FbNN-62" target="vfSD4c-9eN2mQt4-FbNN-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-81" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=0;dashed=1;strokeWidth=2;strokeColor=#6D90C2;" parent="vfSD4c-9eN2mQt4-FbNN-1" source="vfSD4c-9eN2mQt4-FbNN-67" target="vfSD4c-9eN2mQt4-FbNN-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vfSD4c-9eN2mQt4-FbNN-82" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=0;dashed=1;strokeWidth=2;strokeColor=#6D90C2;" parent="vfSD4c-9eN2mQt4-FbNN-1" source="vfSD4c-9eN2mQt4-FbNN-72" target="vfSD4c-9eN2mQt4-FbNN-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
